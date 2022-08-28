@@ -9,5 +9,5 @@ https://www.vakifbank.com.tr/bankomat-kart-turleri.aspx?pageID=682
 
 5) In Abstract_Account_Web_App.py, you should edit the file paths yourself.
 
-6) To run the web application locally, paste the following into the Anocando Prompt:
+6) To run the web application locally, paste the following into the Anaconda Prompt:
    streamlit run "file path of Abstract_Account_Web_App.py"
