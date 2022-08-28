@@ -1,6 +1,6 @@
-1) This application aims to analyze your bank's monthly account statement with information, tables and graphics.
+1) This application aims to analyze your bank's monthly account statement with information, tables, and graphics.
 
-2) This app has developed for Vakıfbank Bankomat Cards.  If you want to get the information you should inspect this:
+2) This app has been developed for Vakıfbank Bankomat Cards.  If you want to get the information you should inspect this:
 https://www.vakifbank.com.tr/bankomat-kart-turleri.aspx?pageID=682
 
 3) Minor updates to the python file are required to be used for another bank's bank or credit card account statement.
