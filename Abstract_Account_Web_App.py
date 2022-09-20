@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
     
 def login():
    
-    st.caption('Streamlit Verison:  v1.7.0')
+    st.caption('Streamlit Version:  v1.7.0')
     st.markdown('<style>div[class="css-1vg7lpk e16nr0p30"] {height:25px;width:21%;margin-left:-46%;margin-top:-12%;  text-align: center;color: black; background:white; font-size: 80%; border:1px solid gray; border-radius: 9px; }</style>', unsafe_allow_html=True)
     
     #Streamlit Section for Login Interface
