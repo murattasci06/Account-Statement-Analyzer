@@ -289,7 +289,7 @@ def main():
         pylab.ylabel('')
         pylab.xlabel('')
         
-        plt.title('\nCount of Purchase or Campaign as Percentage (Pie)\n\n\n\n', fontsize=19,fontweight="bold",pad=6)
+        plt.title('\nCount of Purchase or Campaign as Percentage (Pie)\n\n\n\n\n', fontsize=19,fontweight="bold",pad=6)
         
         plt.legend(loc='upper right', fontsize=9,prop={'size': 17}, bbox_to_anchor=(2,1),frameon=False)
           
@@ -554,62 +554,63 @@ def main():
             print("Spending value for gift money min (min gift money values are same) 1:",spending_for_min_gift1)
            
            
-        if id_gift_money[1]!="":
-            min_gift_money_info2=df["ACIKLAMA"][id_gift_money[1]]
+        if len(id_gift_money)>=2: ####
+            if id_gift_money[1]!="":
+                min_gift_money_info2=df["ACIKLAMA"][id_gift_money[1]]
+              
+                print("Min gift money info (min gift money values are same) 2:",min_gift_money_info2)
+                
+                min_purchasing_gift2=df["BANKOMAT PARA"][id_gift_money[1]]
+               
+                print("Gift money min. (min gift money values are same) 2:",min_purchasing_gift2)
+                
+                spending_for_min_gift2=df["TUTAR"][[id_gift_money[1]]]
+                spending_for_min_gift2=(spending_for_min_gift2._get_value(0, 'TUTAR'))
+                print("Spending value for gift money min (min gift money values are same) 2:",spending_for_min_gift2)
+               
+        if len(id_gift_money)>=3:  
+            if id_gift_money[2]!="":
+                min_gift_money_info3=df["ACIKLAMA"][id_gift_money[2]]
+               
+                print("Min gift money info (min gift money values are same) 3:",min_gift_money_info3)
+                
+                min_purchasing_gift3=df["BANKOMAT PARA"][id_gift_money[2]]
+                
+                print("Gift money min. (min gift money values are same) 3:",min_purchasing_gift3)
+                
+                spending_for_min_gift3=df["TUTAR"][[id_gift_money[2]]]
+                spending_for_min_gift3=(spending_for_min_gift3._get_value(0, 'TUTAR'))
+                print("Spending value for gift money min (min gift money values are same) 3:",spending_for_min_gift3)
+    
+        if len(id_gift_money)>=4:  
+            if id_gift_money[3]!="":
+                min_gift_money_info4=df["ACIKLAMA"][id_gift_money[3]]
+               
+                print("Min gift money info (min gift money values are same) 4:",min_gift_money_info4)
+                 
+                min_purchasing_gift4=df["BANKOMAT PARA"][id_gift_money[3]]
           
-            print("Min gift money info (min gift money values are same) 2:",min_gift_money_info2)
-            
-            min_purchasing_gift2=df["BANKOMAT PARA"][id_gift_money[1]]
-           
-            print("Gift money min. (min gift money values are same) 2:",min_purchasing_gift2)
-            
-            spending_for_min_gift2=df["TUTAR"][[id_gift_money[1]]]
-            spending_for_min_gift2=(spending_for_min_gift2._get_value(0, 'TUTAR'))
-            print("Spending value for gift money min (min gift money values are same) 2:",spending_for_min_gift2)
-           
-           
-        if id_gift_money[2]!="":
-            min_gift_money_info3=df["ACIKLAMA"][id_gift_money[2]]
-           
-            print("Min gift money info (min gift money values are same) 3:",min_gift_money_info3)
-            
-            min_purchasing_gift3=df["BANKOMAT PARA"][id_gift_money[2]]
-            
-            print("Gift money min. (min gift money values are same) 3:",min_purchasing_gift3)
-            
-            spending_for_min_gift3=df["TUTAR"][[id_gift_money[2]]]
-            spending_for_min_gift3=(spending_for_min_gift3._get_value(0, 'TUTAR'))
-            print("Spending value for gift money min (min gift money values are same) 3:",spending_for_min_gift3)
-    
-     
-        if id_gift_money[3]!="":
-            min_gift_money_info4=df["ACIKLAMA"][id_gift_money[3]]
-           
-            print("Min gift money info (min gift money values are same) 4:",min_gift_money_info4)
-             
-            min_purchasing_gift4=df["BANKOMAT PARA"][id_gift_money[3]]
-      
-            print("Gift money min. (min gift money values are same) 4:",min_purchasing_gift4)
-             
-            spending_for_min_gift4=df["TUTAR"][[id_gift_money[3]]]
-            spending_for_min_gift4=(spending_for_min_gift4._get_value(0, 'TUTAR'))
-            print("Spending value for gift money min (min gift money values are same) 4:",spending_for_min_gift4)
-    
-    
-        if id_gift_money[4]!="":
-            min_gift_money_info5=df["ACIKLAMA"][id_gift_money[4]]
-           
-            print("Min gift money info (min gift money values are same) 5:",min_gift_money_info5)
-             
-            min_purchasing_gift5=df["BANKOMAT PARA"][id_gift_money[4]]
-           
-           
-            print("Gift money min. (min gift money values are same) 5:",min_purchasing_gift5)
-             
-            spending_for_min_gift5=df["TUTAR"][[id_gift_money[4]]]
-            spending_for_min_gift5=(spending_for_min_gift5._get_value(0, 'TUTAR'))
-           
-            print("Spending value for gift money min (min gift money values are same) 5:",spending_for_min_gift5)
+                print("Gift money min. (min gift money values are same) 4:",min_purchasing_gift4)
+                 
+                spending_for_min_gift4=df["TUTAR"][[id_gift_money[3]]]
+                spending_for_min_gift4=(spending_for_min_gift4._get_value(0, 'TUTAR'))
+                print("Spending value for gift money min (min gift money values are same) 4:",spending_for_min_gift4)
+        
+        if len(id_gift_money)>=5:  
+            if id_gift_money[4]!="":
+                min_gift_money_info5=df["ACIKLAMA"][id_gift_money[4]]
+               
+                print("Min gift money info (min gift money values are same) 5:",min_gift_money_info5)
+                 
+                min_purchasing_gift5=df["BANKOMAT PARA"][id_gift_money[4]]
+               
+               
+                print("Gift money min. (min gift money values are same) 5:",min_purchasing_gift5)
+                 
+                spending_for_min_gift5=df["TUTAR"][[id_gift_money[4]]]
+                spending_for_min_gift5=(spending_for_min_gift5._get_value(0, 'TUTAR'))
+               
+                print("Spending value for gift money min (min gift money values are same) 5:",spending_for_min_gift5)
          
         try:
             print(id_gift_money[0])
@@ -961,6 +962,3 @@ except PermissionError:
        st.markdown(hide_st_style, unsafe_allow_html=True)
        sound = st.session_state["PATH_INPUT_LAST"]+"/warning.mp3"
        playsound(sound)
-    
-    
-    
