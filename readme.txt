@@ -7,7 +7,5 @@ https://www.vakifbank.com.tr/bankomat-kart-turleri.aspx?pageID=682
 
 > The pdf titled "Bankomat Alışveriş Özeti" file should be in the folder where the Abstract_Account_Web_App python file is located.
 
-> In Abstract_Account_Web_App.py, you should edit the file paths yourself.
-
 > To run the web application locally, paste the following into the Anaconda Prompt:
-   streamlit run "file path of Abstract_Account_Web_App.py"
+  streamlit run "file path of Abstract_Account_Web_App.py"
