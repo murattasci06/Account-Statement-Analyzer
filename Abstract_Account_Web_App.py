@@ -6,6 +6,8 @@ import os
 import fitz 
 import io
 import streamlit as st
+from playsound import playsound
+import time
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -78,9 +80,59 @@ def login():
     hide_st_style =" <style>footer {visibility: hidden;}</style>"
     st.markdown(hide_st_style, unsafe_allow_html=True) 
  
+min_gift_money_info1=""
+min_purchasing_gift1=""
+spending_for_min_gift1=""
+
+min_gift_money_info2=""
+min_purchasing_gift2=""
+spending_for_min_gift2=""
+
+min_gift_money_info3=""
+min_purchasing_gift3=""
+spending_for_min_gift3=""
+
+min_gift_money_info4=""
+min_purchasing_gift4=""
+spending_for_min_gift4=""
+
+min_gift_money_info5=""
+min_purchasing_gift5=""
+spending_for_min_gift5=""
+
+min_gift_money_info6=""
+min_purchasing_gift6=""
+spending_for_min_gift6=""
+
 
 
 def main(): 
+    global min_gift_money_info1
+    global min_purchasing_gift1
+    global spending_for_min_gift1
+    
+    
+    global min_gift_money_info2
+    global min_purchasing_gift2
+    global spending_for_min_gift2
+    
+    
+    global min_gift_money_info3
+    global min_purchasing_gift3
+    global spending_for_min_gift3
+    
+    global min_gift_money_info4
+    global min_purchasing_gift4
+    global spending_for_min_gift4
+    
+    global min_gift_money_info5
+    global min_purchasing_gift5
+    global spending_for_min_gift5
+    
+    global min_gift_money_info6
+    global min_purchasing_gift6
+    global spending_for_min_gift6
+
 
     global list
     if 'PATH_INPUT_LAST' in st.session_state:
@@ -154,15 +206,19 @@ def main():
         c = list(map(lambda x: x.replace('BANKOMAT KART ', 'BANKOMAT KART'), b))
     
         #istenmeyen ifadeler (undesired expressions)
-        stopwords = ['BANKOMAT KART','İŞLEMİ', 'ALIŞVERİŞ EKSTRESİ', 'Dekont yerine kullanılmaz. Uyuşmazlık halinde Banka kayıtları esas alınacaktır', 'www.vakifbank.com.tr I 0850 222 0 724', 'Türkiye Vakıflar Bankası T.A.O. Büyük Mükellefler V.D. 9220034970 Sicil Numarası: 776444','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017          Sf 2 \\ 3   ','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017          Sf 2 \\ 2   ']
+        stopwords = ['BANKOMAT KART','İŞLEMİ','Kampanyası', 'ALIŞVERİŞ EKSTRESİ', 'Dekont yerine kullanılmaz. Uyuşmazlık halinde Banka kayıtları esas alınacaktır', 'www.vakifbank.com.tr I 0850 222 0 724', 'Türkiye Vakıflar Bankası T.A.O. Büyük Mükellefler V.D. 9220034970 Sicil Numarası: 776444','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017          Sf 2 \\ 3   ','Saray Mahallesi Dr. Adnan Büyükdeniz Caddesi No :7 / A-B Ümraniye /İSTANBUL Mersis: 0922003497000017          Sf 2 \\ 2   ']
         d = list(filter(lambda w: w not in stopwords, c))
     
         e = list(map(lambda x: x.replace('CÜZDANDAN HESABA TRANSFER ', 'CÜZDANDAN HESABA TRANSFER İŞLEMİ'), d))
+        
+        f=  list(map(lambda x: x.replace('2022 Temmuz Internet ', '2022 Temmuz Internet Kampanyası'), e))
+    
+        g=  list(map(lambda x: x.replace('2022 Temmuz Restoran ', '2022 Temmuz Restoran Kampanyası'), f))
     
         # df'nin 4 sütununa uygun olarak liste elemanlarını 4'erli olarak uygun sırada alt alta getirme (Aligning the list elements by 4 in the appropriate order according to the 4 columns of the df)
         z=[]
-        for  i in range(int(len(e)/4)):
-              y=((e[i*4:i*4+4]))
+        for  i in range(int(len(g)/4)):
+              y=((g[i*4:i*4+4]))
               z.append(y)
     
         df = pd.DataFrame( z,columns=['ISLEM TARIHI', 'ACIKLAMA','TUTAR', "BANKOMAT PARA"])
@@ -227,13 +283,13 @@ def main():
         #pie chart
         import pylab
         df_count_percent = (df_count['count_of_purchase/campaign'] / df_count['count_of_purchase/campaign'].sum()) * 100
-        plot0 = df_count_percent.plot.pie(y='count_of_purchase/campaign', fontsize=17,figsize=(16, 16),autopct='%0.2f%%',pctdistance=1.2,
+        plot0 = df_count_percent.plot.pie(y='count_of_purchase/campaign', fontsize=17,figsize=(16, 16),autopct='%0.2f%%',pctdistance=1.5,
                                            labeldistance=None,stacked=True)
      
         pylab.ylabel('')
         pylab.xlabel('')
         
-        plt.title('\nCount of Purchase or Campaign as Percentage (Pie)', fontsize=19,fontweight="bold",pad=6)
+        plt.title('\nCount of Purchase or Campaign as Percentage (Pie)\n\n\n\n', fontsize=19,fontweight="bold",pad=6)
         
         plt.legend(loc='upper right', fontsize=9,prop={'size': 17}, bbox_to_anchor=(2,1),frameon=False)
           
@@ -295,7 +351,8 @@ def main():
     
     
         # Min Purchasing Value
-        min_serie00=df["TUTAR"].apply(lambda x: x.strip("'"))
+        df_ignore_return=df[df.ACIKLAMA != "Puan Kazanım İade -Satış İade"] 
+        min_serie00=df_ignore_return["TUTAR"].apply(lambda x: x.strip("'"))
         min_serie=min_serie00.apply(lambda x: x.replace('.', ''))
         min_serie1=min_serie.apply(lambda x: x.replace(",","."))
         df_m=min_serie1.to_frame()
@@ -320,11 +377,11 @@ def main():
              
     
         # The number of campaigns benefited and the gift money earned
-        df_campaign_numb=df_s1[(df_s1.TUTAR == float(0.0)) &  (df.ACIKLAMA!="CÜZDANDAN HESABA TRANSFER İŞLEMİ") ].count()
+        df_campaign_numb=df_s1[(df_s1.TUTAR == float(0.0)) &  (df.ACIKLAMA!="CÜZDANDAN HESABA TRANSFER İŞLEMİ") & (df.ACIKLAMA!="PUAN BAKIM İŞLEMİ") & (df.ACIKLAMA!="Takas Iade") ].count()
         number_of_campaigns_benefited=df_campaign_numb[0]
         print("Number of campaigns benefited:",number_of_campaigns_benefited)
     
-        campaign_id_list=df_s1[(df_s1.TUTAR == float(0.0)) &  (df.ACIKLAMA!="CÜZDANDAN HESABA TRANSFER İŞLEMİ") ].index.tolist()
+        campaign_id_list=df_s1[(df_s1.TUTAR == float(0.0)) &  (df.ACIKLAMA!="CÜZDANDAN HESABA TRANSFER İŞLEMİ") & (df.ACIKLAMA!="PUAN BAKIM İŞLEMİ") & (df.ACIKLAMA!="Takas Iade") ].index.tolist()
     
         # gift money column without "" and ,
         bankomat_para0=df["BANKOMAT PARA"].apply(lambda x: x.strip("'"))
@@ -336,7 +393,7 @@ def main():
         print("Total money earned from campaign:",sum0)
     
         #earned money as max and min
-        campaign_earned_money=pd.DataFrame(np.array(df_bankomat_para["BANKOMAT PARA"][campaign_id_list]).reshape(len(campaign_id_list), 1),  columns=['campaign_earned_money'])
+        campaign_earned_money=pd.DataFrame(np.array(df_bankomat_para["BANKOMAT PARA"][campaign_id_list]).reshape(len(campaign_id_list), 1),  columns=['campaign_earned_money']).astype(float)
         max_campaign_earned_money=float((campaign_earned_money.max())[0])
         min_campaign_earned_money=float((campaign_earned_money.min())[0])
         print("Maximum money earned from the campaign:",max_campaign_earned_money)
@@ -345,8 +402,8 @@ def main():
     
         # Transfer Process from Account
         df_campaign_numb=df_s1[df.ACIKLAMA=="CÜZDANDAN HESABA TRANSFER İŞLEMİ"].count()
-        number_of_campaigns_benefited=df_campaign_numb[0]
-        print("Number of transfer process:",number_of_campaigns_benefited)
+        number_of_transfer_process=df_campaign_numb[0]
+        print("Number of transfer process:",number_of_transfer_process)
     
         transfer_id_list=df_s1[df.ACIKLAMA =="CÜZDANDAN HESABA TRANSFER İŞLEMİ"].index.tolist()
     
@@ -470,18 +527,133 @@ def main():
         df_m2_min=df_m1_min.astype("float")
     
     
-        df_mz=df_m2_min[~(df_m2_min < 0).all(axis=1)] # drop negative values
+        df_mz=df_m2_min[~(df_m2_min <= 0).all(axis=1)] # drop negative values
         z=df_mz.idxmin()[0] #max gift money's id value
         min_gift_money_info=df["ACIKLAMA"][z]
-        print("Min gift money info:",min_gift_money_info)
-    
+       
         min_purchasing_gift=df["BANKOMAT PARA"][z]
-        print("Gift money min. :",min_purchasing_gift)
     
         spending_for_min_gift=df["TUTAR"][z]
-        print("Spending value for gift money min. :",spending_for_min_gift)
+       
+        #There can be more than one situation where the minimum gift money is the same
+        id_gift_money = df.index[df["BANKOMAT PARA"] == min_purchasing_gift].tolist()
+        
+        
+        if id_gift_money[0]!="":
+           
+            min_gift_money_info1=df["ACIKLAMA"][id_gift_money[0]]
+          
+            print("Min gift money info (min gift money values are same) 1:",min_gift_money_info1)
+           
+            min_purchasing_gift1=df["BANKOMAT PARA"][id_gift_money[0]]
+           
+            print("Gift money min. (min gift money values are same) 1:",min_purchasing_gift1)
+           
+            spending_for_min_gift1=df["TUTAR"][[id_gift_money[0]]]
+            spending_for_min_gift1=(spending_for_min_gift1._get_value(0, 'TUTAR'))
+            print("Spending value for gift money min (min gift money values are same) 1:",spending_for_min_gift1)
+           
+           
+        if id_gift_money[1]!="":
+            min_gift_money_info2=df["ACIKLAMA"][id_gift_money[1]]
+          
+            print("Min gift money info (min gift money values are same) 2:",min_gift_money_info2)
+            
+            min_purchasing_gift2=df["BANKOMAT PARA"][id_gift_money[1]]
+           
+            print("Gift money min. (min gift money values are same) 2:",min_purchasing_gift2)
+            
+            spending_for_min_gift2=df["TUTAR"][[id_gift_money[1]]]
+            spending_for_min_gift2=(spending_for_min_gift2._get_value(0, 'TUTAR'))
+            print("Spending value for gift money min (min gift money values are same) 2:",spending_for_min_gift2)
+           
+           
+        if id_gift_money[2]!="":
+            min_gift_money_info3=df["ACIKLAMA"][id_gift_money[2]]
+           
+            print("Min gift money info (min gift money values are same) 3:",min_gift_money_info3)
+            
+            min_purchasing_gift3=df["BANKOMAT PARA"][id_gift_money[2]]
+            
+            print("Gift money min. (min gift money values are same) 3:",min_purchasing_gift3)
+            
+            spending_for_min_gift3=df["TUTAR"][[id_gift_money[2]]]
+            spending_for_min_gift3=(spending_for_min_gift3._get_value(0, 'TUTAR'))
+            print("Spending value for gift money min (min gift money values are same) 3:",spending_for_min_gift3)
+    
+     
+        if id_gift_money[3]!="":
+            min_gift_money_info4=df["ACIKLAMA"][id_gift_money[3]]
+           
+            print("Min gift money info (min gift money values are same) 4:",min_gift_money_info4)
+             
+            min_purchasing_gift4=df["BANKOMAT PARA"][id_gift_money[3]]
+      
+            print("Gift money min. (min gift money values are same) 4:",min_purchasing_gift4)
+             
+            spending_for_min_gift4=df["TUTAR"][[id_gift_money[3]]]
+            spending_for_min_gift4=(spending_for_min_gift4._get_value(0, 'TUTAR'))
+            print("Spending value for gift money min (min gift money values are same) 4:",spending_for_min_gift4)
     
     
+        if id_gift_money[4]!="":
+            min_gift_money_info5=df["ACIKLAMA"][id_gift_money[4]]
+           
+            print("Min gift money info (min gift money values are same) 5:",min_gift_money_info5)
+             
+            min_purchasing_gift5=df["BANKOMAT PARA"][id_gift_money[4]]
+           
+           
+            print("Gift money min. (min gift money values are same) 5:",min_purchasing_gift5)
+             
+            spending_for_min_gift5=df["TUTAR"][[id_gift_money[4]]]
+            spending_for_min_gift5=(spending_for_min_gift5._get_value(0, 'TUTAR'))
+           
+            print("Spending value for gift money min (min gift money values are same) 5:",spending_for_min_gift5)
+         
+        try:
+            print(id_gift_money[0])
+        except:
+            min_gift_money_info1="NA"
+            min_purchasing_gift1="NA"
+            spending_for_min_gift1="NA"
+        
+        try:
+            print(id_gift_money[1])
+        except:
+            min_gift_money_info2="NA"
+            min_purchasing_gift2="NA"
+            spending_for_min_gift2="NA"
+                 
+        try: 
+            print(id_gift_money[2])
+        except:
+            min_gift_money_info3="NA"
+            min_purchasing_gift3="NA"
+            spending_for_min_gift3="NA"
+        
+        try:
+            print(id_gift_money[3])
+        except:
+            min_gift_money_info4="NA"
+            min_purchasing_gift4="NA"
+            spending_for_min_gift4="NA"  
+        
+        try:
+            print(id_gift_money[4])
+        except:
+            min_gift_money_info5="NA"
+            min_purchasing_gift5="NA"
+            spending_for_min_gift5="NA" 
+         
+        try: 
+             print(id_gift_money[5])
+        except:
+              min_gift_money_info6="NA"
+              min_purchasing_gift6="NA"
+              spending_for_min_gift6="NA" 
+    
+       
         #Sum of Values
         sum_of_gift_money=df_mz.sum()[0]
         print("Sum of gift money:",sum_of_gift_money)
@@ -514,21 +686,27 @@ def main():
         with col1:
          
           if st.button('Show Info Analysis'):    
-                 for i in range((41)):
+                 for i in range((56)):
                    txt1=["Customer:"+"  "+ name ,"Period:"+"  "+period,"Max purchasing value:"+"  "+str(max_purchasing_value),"Max purchasing info:"+"  "+max_purchasing_info,"Gift money of max purchasing:"+"  "+str(max_purchasing_gift0),
                      "Date of max purchasing:"+"  "+str(max_purchasing_date),"Min purchasing value:"+"  "+str(min_purchasing_value),"Min purchasing info:"+"  "+min_purchasing_info,
                      "Gift money of min purchasing:"+"  "+str(min_purchasing_gift),"Date of min purchasing :"+"  "+str(min_purchasing_date),"Number of campaigns benefited:"+"  "+str(number_of_campaigns_benefited),"Total money earned from campaign:"+"  "+str(sum0),
-                     "Maximum money earned from the campaign:"+"  "+str(max_campaign_earned_money),"Minumum money earned from the campaign:"+"  "+str(min_campaign_earned_money),"Number of transfer process:"+"  "+str(number_of_campaigns_benefited),
+                     "Maximum money earned from the campaign:"+"  "+str(max_campaign_earned_money),"Minumum money earned from the campaign:"+"  "+str(min_campaign_earned_money),"Number of transfer process:"+"  "+str(number_of_transfer_process),
                      "Max. transferred money:"+"  "+str(max_transfered_money),"Min. transferred money:"+"  "+str(min_transfered_money),"Total transferred money to the account:"+"  "+str(sum),"Max gift money info (including campaigns):"+"  "+max_gift_money_info,
                      "Gift money max. (including campaigns):"+"  "+max_purchasing_gift,
                      "Spending value for gift money max. (including campaigns) :"+"  "+spending_for_max_gift,"Max gift money info (without campaign / 1.):"+"  "+max_list_without00,
                      "Spending value for gift money max. (without campaign / 1.):"+"  "+str(max_list_without01),
                      "Gift money max. (without campaign / 1.):"+"  "+str(max_list_without02),"Max gift money info (without campaign / 2.):"+"  "+str(max_list_without10),"Spending value for gift money max. (without campaign / 2.):"+"  "+str(max_list_without11),"Gift money max. (without campaign / 2.):"+"  "+str(max_list_without12),"Max gift money info (without campaign / 3.):"+"  "+str(max_list_without20),
                      "Spending value for gift money max. (without campaign / 3.):"+"  "+str(max_list_without21),"Gift money max. (without campaign / 3.):"+"  "+str(max_list_without22),"Max gift money info (without campaign / 4.):"+"  "+str(max_list_without30),"Spending value for gift money max. (without campaign / 4.):"+"  "+str(max_list_without31),"Gift money max. (without campaign / 4.):"+"  "+str(max_list_without32),
-                     "Max gift money info (without campaign / 5.):"+"  "+str(max_list_without40),"Spending value for gift money max. (without campaign / 5.):"+"  "+str(max_list_without41),"Gift money max. (without campaign / 5.) :"+"  "+str(max_list_without42),"Min gift money info:"+"  "+min_gift_money_info,"Gift money min. :"+"  "+min_purchasing_gift,"Spending value for gift money min. :"+"  "+spending_for_min_gift,
+                     "Max gift money info (without campaign / 5.):"+"  "+str(max_list_without40),"Spending value for gift money max. (without campaign / 5.):"+"  "+str(max_list_without41),"Gift money max. (without campaign / 5.) :"+"  "+str(max_list_without42),"Min gift money info (1):"+"  "+min_gift_money_info1,"Gift money min. (1):"+"  "+min_purchasing_gift1,"Spending value for gift money min. (1):"+"  "+spending_for_min_gift1,
+                     "Min gift money info .(2):"+"  "+min_gift_money_info2,"Gift money min. (2):"+"  "+min_purchasing_gift2,"Spending value for gift money min. (2):"+"  "+spending_for_min_gift2,
+                     "Min gift money info (3):"+"  "+min_gift_money_info3,"Gift money min. (3):"+"  "+min_purchasing_gift3,"Spending value for gift money min. (3):"+"  "+spending_for_min_gift3,
+                     "Min gift money info (4):"+"  "+min_gift_money_info4,"Gift money min. (4):"+"  "+min_purchasing_gift4,"Spending value for gift money min. (4):"+"  "+spending_for_min_gift4,
+                     "Min gift money info (5):"+"  "+min_gift_money_info5,"Gift money min. (5):"+"  "+min_purchasing_gift5,"Spending value for gift money min. (5):"+"  "+spending_for_min_gift5,
+                     "Min gift money info (6):"+"  "+min_gift_money_info6,"Gift money min. (6):"+"  "+min_purchasing_gift6,"Spending value for gift money min. (6):"+"  "+spending_for_min_gift6,
                      "Sum of gift money:"+"  "+str(sum_of_gift_money),"Sum of spending:"+"  "+str(sum_of_spending)]
+                     
                   
-                   
+                  
                    txt1=txt1[i]
                  
                  
@@ -738,18 +916,18 @@ def main():
 
 try:
     if __name__=='__main__':
-                           
-               if "page" not in st.session_state:
-                   st.session_state["page"] = "login"
-            
-               if st.session_state["page"] == "login":
-                 
-                    login()
-               
-               elif st.session_state["page"] == "main":
-               
-                    main()
-
+                               
+                   if "page" not in st.session_state:
+                       st.session_state["page"] = "login"
+                
+                   if st.session_state["page"] == "login":
+                     
+                        login()
+                   
+                   elif st.session_state["page"] == "main":
+                   
+                        main()
+    
 except fitz.FileNotFoundError: 
        st.warning("Please make the correct login on the login screen or check the pdf file in app path and try again.")
        st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
@@ -766,18 +944,3 @@ except IndexError:
        st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
        hide_st_style =" <style>footer {visibility: hidden;}</style>"
        st.markdown(hide_st_style, unsafe_allow_html=True)  
-       
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
