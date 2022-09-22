@@ -929,18 +929,38 @@ try:
                         main()
     
 except fitz.FileNotFoundError: 
+      
        st.warning("Please make the correct login on the login screen or check the pdf file in app path and try again.")
        st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
        hide_st_style =" <style>footer {visibility: hidden;}</style>"
        st.markdown(hide_st_style, unsafe_allow_html=True)  
+       sound = st.session_state["PATH_INPUT_LAST"]+"/warning.mp3"
+       playsound(sound)
 
 except AttributeError:
+       
        st.warning("Please check the content of the pdf file.") 
        st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
        hide_st_style =" <style>footer {visibility: hidden;}</style>"
        st.markdown(hide_st_style, unsafe_allow_html=True)  
+       sound = st.session_state["PATH_INPUT_LAST"]+"/warning.mp3"
+       playsound(sound)
+       
 except IndexError:                
        st.warning("Generic application error. Please request software update.")
        st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
        hide_st_style =" <style>footer {visibility: hidden;}</style>"
-       st.markdown(hide_st_style, unsafe_allow_html=True)  
+       st.markdown(hide_st_style, unsafe_allow_html=True)
+       sound = st.session_state["PATH_INPUT_LAST"]+"/warning.mp3"
+       playsound(sound)
+       
+except PermissionError:
+       st.warning("Please close the Bankomat Alışveriş Özeti.csv file.")
+       st.markdown("""<style>.stApp {background: url("https://cutewallpaper.org/22/gears-wallpaper-background/208187525.jpg");background-size: cover}</style>""",unsafe_allow_html=True)
+       hide_st_style =" <style>footer {visibility: hidden;}</style>"
+       st.markdown(hide_st_style, unsafe_allow_html=True)
+       sound = st.session_state["PATH_INPUT_LAST"]+"/warning.mp3"
+       playsound(sound)
+    
+    
+    
